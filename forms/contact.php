@@ -1,34 +1,46 @@
 
 <?php
-  $receiving_email_address = 'serra.sahin@ertuncozcan.com';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+require '../phpmailer/PHPMailer.php';
+require '../phpmailer/Exception.php';
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
-
-  
-  $contact->smtp = array(
-    'host' => 'mail.ertuncozcan.com',
-    'username' => 'webwp@ertuncozcan.com',
-    'password' => '71+*gt',
-    'port' => '465'
-  );
-  
-
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
-
-  echo $contact->send();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+    
+    // PHPMailer nesnesini oluşturun
+    $mail = new PHPMailer(true);
+    
+    // SMTP ayarları
+    $mail->isSMTP();
+    $mail->Host = 'mail.ertuncozcan.com'; // SMTP sunucu adresi
+    $mail->Port = 465; // SMTP portu (Varsayılan olarak 25 kullanılır)
+    $mail->SMTPAuth = true; // SMTP kimlik doğrulama kullanılıyor mu (true/false)
+    $mail->SMTPSecure = 'ssl'; // Güvenli bağlantı türü (ssl veya tls)
+    $mail->Username = 'webwp@ertuncozcan.com'; // SMTP sunucusuna giriş yapacak kullanıcı adı
+    $mail->Password = '71+*gt'; // SMTP sunucusuna giriş yapacak parola
+    
+    // Gönderen ve alıcı bilgileri
+    $mail->setFrom('webwp@ertuncozcan.com'); // Gönderen e-posta ve adı
+    $mail->addAddress('serra.sahin@ertuncozcan.com'); // Alıcı e-posta adresi
+    
+    // E-posta başlığı ve içeriği
+    $mail->Subject = $subject; // E-posta başlığı
+    $mail->Body = "Ad: $name\nE-posta: $email\nKonu: $subject\nMesaj:\n$message"; // E-posta içeriği
+    
+    // E-postayı gönderme işlemi
+    try {
+        $mail->send();
+        echo "E-posta başarıyla gönderildi.";
+    } catch (Exception $e) {
+        echo "E-posta gönderirken bir hata oluştu: " . $mail->ErrorInfo;
+    }
+}
+else{
+	echo "if bloğuna hiç girmiyor smtp bilgileri ile alakalı değil."
+}
 ?>
-
