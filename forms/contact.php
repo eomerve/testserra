@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // SMTP ayarları
     $mail->isSMTP();
     $mail->Host = 'mail.ertuncozcan.com'; // SMTP sunucu adresi
-    $mail->Port = 443; // SMTP portu (Varsayılan olarak 25 kullanılır)
+    $mail->Port = 465; // SMTP portu (Varsayılan olarak 25 kullanılır)
     $mail->SMTPAuth = false; // SMTP kimlik doğrulama kullanılıyor mu (true/false)
     $mail->Username = 'webwp@ertuncozcan.com'; // SMTP sunucusuna giriş yapacak kullanıcı adı
     $mail->Password = '71+*gt'; // SMTP sunucusuna giriş yapacak parola
