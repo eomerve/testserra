@@ -1,44 +1,41 @@
-
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+  /**
+  * Requires the "PHP Email Form" library
+  * The "PHP Email Form" library is available only in the pro version of the template
+  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
+  * For more info and help: https://bootstrapmade.com/php-email-form/
+  */
 
-require '../../assets/vendor/phpmailer/PHPMailer.php';
-require '../../assets/vendor/phpmailer/SMTP.php';
-require '../../assets/vendor/phpmailer/Exception.php';
+  // Replace contact@example.com with your real receiving email address
+  $receiving_email_address = 'serra.sahin@ertuncozcan.com';
 
-if (isset($_POST)) {
-	echo'içerde'
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $subject = $_POST["subject"];
-    $message = $_POST["message"];
-    
-    // PHPMailer nesnesini oluşturun
-    $mail = new PHPMailer(true);
-    
-    try {
-        // SMTP ayarları
-        $mail->Host = 'mail.ertuncozcan.com'; // SMTP sunucu adresi
-        $mail->Port = 465; // SMTP portu (Genellikle 587 veya 465 kullanılır)
-        $mail->SMTPAuth = true; // SMTP kimlik doğrulama kullanılıyor mu (true/false)
-        $mail->Username = 'webwp@ertuncozcan.com'; // SMTP sunucusuna giriş yapacak e-posta adresi
-        $mail->Password = '71+*gt'; // SMTP sunucusuna giriş yapacak parola
-    
-        // Gönderen ve alıcı bilgileri
-        $mail->setFrom('webwp@ertuncozcan.com', 'Ertunç Özcan'); // Gönderen e-posta ve adı
-        $mail->addAddress('serra.sahin@ertuncozcan.com'); // Alıcı e-posta adresi
-    
-        // E-posta başlığı ve içeriği
-        $mail->Subject = $subject; // E-posta başlığı
-        $mail->Body = "Ad: $name\nE-posta: $email\nKonu: $subject\nMesaj:\n$message"; // E-posta içeriği
-    
-        // E-postayı gönderme işlemi
-        $mail->send();
-        echo 'E-posta başarıyla gönderildi.';
-    } catch (Exception $e) {
-        echo 'E-posta gönderirken hata oluştu: ' . $mail->ErrorInfo;
-    }
-}
+  if( file_exists($php_email_form = '../assets/vendor/phpmailer/PHPMailer/src/PHPMailer.php' )) {
+    include( $php_email_form );
+  } else {
+    die( 'Unable to load the "PHP Email Form" Library!');
+  }
+
+  $contact = new PHP_Email_Form;
+  $contact->ajax = true;
+  
+  $contact->to = $receiving_email_address;
+  $contact->from_name = $_POST['name'];
+  $contact->from_email = $_POST['email'];
+  $contact->subject = $_POST['subject'];
+
+  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
+  
+  $contact->smtp = array(
+    'host' => 'mail.ertuncozcan.com',
+    'username' => 'webwp@ertuncozcan.com',
+    'password' => '71+*gt',
+    'port' => '465'
+  );
+  
+
+  $contact->add_message( $_POST['name'], 'From');
+  $contact->add_message( $_POST['email'], 'Email');
+  $contact->add_message( $_POST['message'], 'Message', 10);
+
+  echo $contact->send();
 ?>
