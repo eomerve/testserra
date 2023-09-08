@@ -2,8 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../phpmailer/PHPMailer.php';
-require '../phpmailer/Exception.php';
+require 'vendor/phpmailer/PHPMailer.php';
+require 'vendor/phpmailer/Exception.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
