@@ -1,7 +1,7 @@
 <?php
 //email gönderimi için gerekli olan dosyaları dahil ediyoruz.
-include 'PHPMailer/class.phpmailer.php';
-include 'PHPMailer/class.smtp.php';
+include 'PHPMailer/phpmailer.php';
+include 'PHPMailer/smtp.php';
 
 //İletişim formumuzdan gelen bilgileri alıyoruz.
 $adisoyadi=$_POST['adisoyadi'];
@@ -13,7 +13,7 @@ $mail = new PHPMailer(); //ilgili PHPMailer class'ımızdan bir nesne türetiyor
 $mail->IsSMTP();
 $mail->SMTPAuth = true; 
 $mail->Host = 'smtp.gmail.com'; //SMTP için kullanılacak sunucu adresi
-$mail->Port = 25; //TLS protokolünün kullanacağı port numarası
+$mail->Port = 587; //TLS protokolünün kullanacağı port numarası
 $mail->Username = 'eomervecelik@gmail.com'; //Email gönderecek adres
 $mail->Password = 'eodxtefptgrmcgnl'; ////Email gönderecek adresin şifresi
 $mail->SetFrom($mail->Username, 'Serra Şahin');
