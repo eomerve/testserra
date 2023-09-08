@@ -13,7 +13,7 @@ $mail = new PHPMailer(); //ilgili PHPMailer class'ımızdan bir nesne türetiyor
 $mail->IsSMTP();
 $mail->SMTPAuth = true; 
 $mail->Host = 'mail.ertuncozcan.com'; //SMTP için kullanılacak sunucu adresi
-$mail->Port = 465; //TLS protokolünün kullanacağı port numarası
+$mail->Port = 587; //TLS protokolünün kullanacağı port numarası
 $mail->SMTPSecure = 'ssl'; //kullanacağımız güvenlik protokolü SSL veya TLS olabilir.
 $mail->Username = 'webwp@ertuncozcan.com'; //Email gönderecek adres
 $mail->Password = '71+*gt'; ////Email gönderecek adresin şifresi
