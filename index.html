@@ -1,3 +1,16 @@
+<?php
+// E-posta gönderme işlemleri burada gerçekleşir.
+include 'PHPMailer/phpmailer.php';
+include 'PHPMailer/smtp.php';
+
+// E-posta gönderme işleminiz
+if ($mail->Send()) {
+    echo "Email başarıyla gönderildi";
+} else {
+    echo "Email gönderme hatası: " . $mail->ErrorInfo;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
