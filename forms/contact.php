@@ -1,10 +1,7 @@
+
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require '../asssets/vendor/phpmailer/PHPMailer/src/PHPMailer.php';
-require '../asssets/vendor/phpmailer/PHPMailer/src/Exception.php';
-
 
 
 
@@ -29,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Gönderen ve alıcı bilgileri
     $mail->setFrom('webwp@ertuncozcan.com', 'Ertunç Özcan'); // Gönderen e-posta ve adı
     $mail->addAddress('serra.sahin@ertuncozcan.com'); // Alıcı e-posta adresi
+    
     
     // E-posta başlığı ve içeriği
     $mail->Subject = $subject; // E-posta başlığı
