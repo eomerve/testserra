@@ -3,10 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/PHPMailer.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset == ($_POST)) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $subject = $_POST["subject"];
