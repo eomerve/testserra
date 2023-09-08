@@ -13,7 +13,7 @@ $mail = new PHPMailer(); //ilgili PHPMailer class'ımızdan bir nesne türetiyor
 $mail->IsSMTP();
 $mail->SMTPAuth = true; 
 $mail->Host = 'smtp.gmail.com'; //SMTP için kullanılacak sunucu adresi
-$mail->Port = 587; //TLS protokolünün kullanacağı port numarası
+$mail->Port = 25; //TLS protokolünün kullanacağı port numarası
 $mail->Username = 'eomervecelik@gmail.com'; //Email gönderecek adres
 $mail->Password = 'eodxtefptgrmcgnl'; ////Email gönderecek adresin şifresi
 $mail->SetFrom($mail->Username, 'Serra Şahin');
