@@ -12,13 +12,12 @@ $mesaj=$_POST['mesaj'];
 $mail = new PHPMailer(); //ilgili PHPMailer class'ımızdan bir nesne türetiyoruz.
 $mail->IsSMTP();
 $mail->SMTPAuth = true; 
-$mail->Host = 'mail.ertuncozcan.com'; //SMTP için kullanılacak sunucu adresi
-$mail->Port = 25; //TLS protokolünün kullanacağı port numarası
-$mail->SMTPSecure = 'ssl'; //kullanacağımız güvenlik protokolü SSL veya TLS olabilir.
-$mail->Username = 'webwp@ertuncozcan.com'; //Email gönderecek adres
-$mail->Password = '71+*gt'; ////Email gönderecek adresin şifresi
+$mail->Host = 'smtp.gmail.com'; //SMTP için kullanılacak sunucu adresi
+$mail->Port = 587; //TLS protokolünün kullanacağı port numarası
+$mail->Username = 'eomervecelik@gmail.com'; //Email gönderecek adres
+$mail->Password = 'eodxtefptgrmcgnl'; ////Email gönderecek adresin şifresi
 $mail->SetFrom($mail->Username, 'Serra Şahin');
-$mail->AddAddress('serra.sahin@ertuncozcan.com', '
+$mail->AddAddress('serrasahineom@gmail.com', '
 '); //Bu emaili gideceği e-posta adresi
 $mail->CharSet = 'UTF-8'; //Karakterlerin düzgün görünmesi için utf-8 ekliyoruz.
 $mail->Subject ="Web sitesinin iletişim bölümünden mesaj var"; //emailimizin konusu
