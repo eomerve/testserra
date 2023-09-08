@@ -3,7 +3,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
+require '../assets/vendor/phpmailer/PHPMailer.php';
+require '../assets/vendor/phpmailer/Exception.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
@@ -19,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Host = 'mail.ertuncozcan.com'; // SMTP sunucu adresi
     $mail->Port = 465; // SMTP portu (Varsayılan olarak 25 kullanılır)
     $mail->SMTPAuth = true; // SMTP kimlik doğrulama kullanılıyor mu (true/false)
-    $mail->SMTPSecure = 'tls'; // Güvenli bağlantı türü (ssl veya tls)
+    $mail->SMTPSecure = 'ssl'; // Güvenli bağlantı türü (ssl veya tls)
     $mail->Username = 'webwp@ertuncozcan.com'; // SMTP sunucusuna giriş yapacak kullanıcı adı
     $mail->Password = '71+*gt'; // SMTP sunucusuna giriş yapacak parola
     
