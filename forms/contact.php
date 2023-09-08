@@ -9,6 +9,7 @@ require '../../assets/vendor/phpmailer/SMTP.php';
 require '../../assets/vendor/phpmailer/Exception.php';
 
 if (isset($_POST)) {
+	echo'içerde'
     $name = $_POST["name"];
     $email = $_POST["email"];
     $subject = $_POST["subject"];
@@ -19,7 +20,6 @@ if (isset($_POST)) {
     
     try {
         // SMTP ayarları
-        $mail->isSMTP();
         $mail->Host = 'mail.ertuncozcan.com'; // SMTP sunucu adresi
         $mail->Port = 465; // SMTP portu (Genellikle 587 veya 465 kullanılır)
         $mail->SMTPAuth = true; // SMTP kimlik doğrulama kullanılıyor mu (true/false)
