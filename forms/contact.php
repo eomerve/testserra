@@ -17,15 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // SMTP ayarları
     $mail->isSMTP();
-    $mail->Host = 'mail.ertuncozcan.com'; // SMTP sunucu adresi
-    $mail->Port = 465; // SMTP portu (Varsayılan olarak 25 kullanılır)
+    $mail->Host = 'smtp.kargrupmimarlik.com'; // SMTP sunucu adresi
+    $mail->Port = 587; // SMTP portu (Varsayılan olarak 25 kullanılır)
     $mail->SMTPAuth = true; // SMTP kimlik doğrulama kullanılıyor mu (true/false)
-    $mail->SMTPSecure = 'ssl'; // Güvenli bağlantı türü (ssl veya tls)
-    $mail->Username = 'webwp@ertuncozcan.com'; // SMTP sunucusuna giriş yapacak kullanıcı adı
-    $mail->Password = '71+*gt'; // SMTP sunucusuna giriş yapacak parola
+    $mail->Username = 'info@kargrupmimarlik.com'; // SMTP sunucusuna giriş yapacak kullanıcı adı
+    $mail->Password = 'Oc5kaegH'; // SMTP sunucusuna giriş yapacak parola
     
     // Gönderen ve alıcı bilgileri
-    $mail->setFrom('webwp@ertuncozcan.com', 'Ertunç Özcan'); // Gönderen e-posta ve adı
+    $mail->setFrom('info@kargrupmimarlik.com', 'Ertunç Özcan'); // Gönderen e-posta ve adı
     $mail->addAddress('serra.sahin@ertuncozcan.com'); // Alıcı e-posta adresi
     
     
