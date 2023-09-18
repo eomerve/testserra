@@ -108,7 +108,7 @@ h6 {
 #header .logo img {
   padding: 0;
   margin: 0;
-  max-height: 40px;
+  max-height: 60px;
 }
 
 /*--------------------------------------------------------------
@@ -1446,6 +1446,8 @@ section {
 .contact .php-email-form .error-message br+br {
   margin-top: 25px;
 }
+
+
 
 .contact .php-email-form .sent-message {
   display: none;

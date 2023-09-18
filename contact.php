@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addAddress('serra.sahin@ertuncozcan.com'); // Alıcı e-posta adresi
     
         // E-posta başlığı ve içeriği
-        $mail->Subject = $subject; // E-posta başlığı
+        $mail->Subject ="Web sitesinin Contact bölümünden mesaj var"; // E-posta başlığı
         $mail->Body = "Ad: $name\nE-posta: $email\nKonu: $subject\nMesaj:\n$message"; // E-posta içeriği
     
         // E-postayı gönderme işlemi
